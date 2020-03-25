@@ -20,17 +20,30 @@ public class PlayerController : MonoBehaviour
     public int maxJumps;
     public int extraJumps;
 
+    private bool isFiring;
+    private bool isStationary;
+
+    Animator animator;
+
+    
+
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
+        animator = GetComponent<Animator>();
+        isFiring = false;
     }
     void Update(){
-        
+        animator.SetBool("IsStationary", isStationary);
+        animator.SetBool("IsGrounded", isGrounded);
+        animator.SetBool("IsFiring", isFiring);
     }
     // Update is called once per frame
     void FixedUpdate()
     {   
+        if(Mathf.Abs(rb2d.velocity.x) > 0) isStationary = false;
+        else isStationary = true;
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, ground);
         float moveInput = Input.GetAxis("Horizontal");
         rb2d.velocity = new Vector2(moveInput * speed, rb2d.velocity.y);
