@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 
 public class PlayerController : MonoBehaviour
 {
@@ -25,7 +26,8 @@ public class PlayerController : MonoBehaviour
 
     Animator animator;
 
-    
+    public int currentColor = 0; //0 - white, 1 - red, 2 - green, 3 - blue 
+    public Transform lightColor;
 
     // Start is called before the first frame update
     void Start()
@@ -38,6 +40,34 @@ public class PlayerController : MonoBehaviour
         animator.SetBool("IsStationary", isStationary);
         animator.SetBool("IsGrounded", isGrounded);
         animator.SetBool("IsFiring", isFiring);
+        if (Input.GetKeyDown(KeyCode.Z))
+        {
+            PrevColor();
+            print(currentColor);
+        }
+        if (Input.GetKeyDown(KeyCode.X))
+        {
+            NextColor();
+            print(currentColor);
+        }
+        switch (currentColor)
+        {
+            case 0:
+                lightColor.GetComponent<Light2D>().color = Color.white;
+                break;
+            case 1:
+                lightColor.GetComponent<Light2D>().color = Color.red;
+                break;
+            case 2:
+                lightColor.GetComponent<Light2D>().color = Color.green;
+                break;
+            case 3:
+                lightColor.GetComponent<Light2D>().color = Color.blue;
+                break;
+            default: 
+                lightColor.GetComponent<Light2D>().color = Color.white;
+                break;
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
@@ -62,11 +92,29 @@ public class PlayerController : MonoBehaviour
             rb2d.velocity = Vector2.up * jumpForce;
             extraJumps--;
         }
+
+        
+
     }
     void Flip(){
         facingRight = !facingRight;
         Vector3 Scaler = transform.localScale;
         Scaler.x *= -1;
         transform.localScale = Scaler;
+    }
+    void NextColor(){
+        if(currentColor == 3){
+            currentColor = 0;
+        } else {
+            currentColor += 1;
+        }
+    }
+    void PrevColor(){
+        if(currentColor == 0){
+            currentColor = 3;
+        } else {
+            currentColor -= 1;
+        }
+
     }
 }
