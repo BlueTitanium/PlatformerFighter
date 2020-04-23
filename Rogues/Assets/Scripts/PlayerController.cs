@@ -6,8 +6,9 @@ using UnityEngine.Experimental.Rendering.Universal;
 public class PlayerController : MonoBehaviour
 {
     public float speed;
+    public float originalSpeed;
     public float jumpForce;
-    
+    public float originalJumpForce;
     private Rigidbody2D rb2d;
     private Vector2 moveVelocity;
     
@@ -29,12 +30,17 @@ public class PlayerController : MonoBehaviour
     public int currentColor = 0; //0 - white, 1 - red, 2 - green, 3 - blue 
     public Transform lightColor;
 
+    public int points;
+    public int maxPoints;
+
     // Start is called before the first frame update
     void Start()
     {
         rb2d = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         isFiring = false;
+        originalJumpForce = jumpForce;
+        originalSpeed = speed;
     }
     void Update(){
         animator.SetBool("IsStationary", isStationary);
