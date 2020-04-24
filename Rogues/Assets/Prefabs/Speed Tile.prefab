@@ -124,7 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentColorBox: 0
   currentColor: 2
-  multiplier: 1.25
+  multiplier: 1.5
   lightColor: {fileID: 1856603330607994045}
   player: {fileID: 0}
   playerEntered: 0

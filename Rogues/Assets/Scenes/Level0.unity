@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 1
+  m_UseShadowmask: 0
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -6125,13 +6125,14 @@ MonoBehaviour:
   highScore: 0
   highScoreCall: HighScore0
   currentLevelName: Level0
-  nextLevelEasy: bruh
-  nextLevelMed: bruh
-  nextLevelHard: bruh
+  nextLevelEasy: Level1
+  nextLevelMed: Level1
+  nextLevelHard: Level1
   easyLevelReq: 300
   mediumLevelReq: 200
   hardLevelReq: 100
   overrideLevel: 1
+  reset: 0
 --- !u!4 &2108476843
 Transform:
   m_ObjectHideFlags: 0

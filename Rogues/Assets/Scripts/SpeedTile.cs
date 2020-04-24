@@ -13,9 +13,9 @@ public class SpeedTile : MonoBehaviour
     public bool playerEntered;
     static float t = 0.0f;
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        player.GetComponent<PlayerController>().speed = Mathf.Lerp(player.GetComponent<PlayerController>().speed, player.GetComponent<PlayerController>().originalJumpForce, t);
+//        player.GetComponent<PlayerController>().speed = Mathf.Lerp(player.GetComponent<PlayerController>().speed, player.GetComponent<PlayerController>().originalSpeed, t);
         switch (currentColor)
         {
             case 0:
@@ -44,6 +44,9 @@ public class SpeedTile : MonoBehaviour
                 player.GetComponent<PlayerController>().speed = player.GetComponent<PlayerController>().originalSpeed;
             }
         }
+        if(!playerEntered){
+            player.GetComponent<PlayerController>().speed = Mathf.SmoothStep(player.GetComponent<PlayerController>().speed, player.GetComponent<PlayerController>().originalSpeed, Time.deltaTime);
+        }
     }
     //void OnTriggerStay2D(Collider2D other) {
     //    currentColorBox = other.gameObject.GetComponent<PlayerController>().currentColor;
@@ -55,6 +58,11 @@ public class SpeedTile : MonoBehaviour
     }
     void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.name == "Player")playerEntered = false;
-        t += 0.5f * Time.deltaTime;
+        ExecuteAfterTime(1);
+    }
+    IEnumerator ExecuteAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        player.GetComponent<PlayerController>().speed = player.GetComponent<PlayerController>().originalSpeed;
     }
 }
