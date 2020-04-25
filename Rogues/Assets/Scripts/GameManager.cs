@@ -66,6 +66,9 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.DeleteKey(highScoreCall);
             highScore = 0;
         }
+        if(seconds >= 300f){
+            Restart();
+        }
     }
     public void Pause()
     {

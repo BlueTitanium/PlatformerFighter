@@ -11,7 +11,7 @@ public class SpeedTile : MonoBehaviour
     public Transform lightColor;
     public Transform player;
     public bool playerEntered;
-    static float t = 0.0f;
+    //static float t = 0.0f;
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -54,7 +54,7 @@ public class SpeedTile : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.gameObject.name == "Player")playerEntered = true;
-        t = 0f;
+   //     t = 0f;
     }
     void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.name == "Player")playerEntered = false;
