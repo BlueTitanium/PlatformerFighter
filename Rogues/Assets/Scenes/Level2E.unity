@@ -2330,7 +2330,7 @@ MonoBehaviour:
   easyLevelReq: 300
   mediumLevelReq: 31
   hardLevelReq: 16
-  overrideLevel: 1
+  overrideLevel: 0
   reset: 0
 --- !u!4 &715908959
 Transform:
