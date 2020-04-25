@@ -36,6 +36,7 @@ public class Collectable : MonoBehaviour
             currentColorBox = player.GetComponent<PlayerController>().currentColor;
             if(currentColor == currentColorBox){
                 player.GetComponent<PlayerController>().points += 1;
+                player.GetComponent<AudioSource>().Play();
                 Destroy(gameObject);
             }
         }

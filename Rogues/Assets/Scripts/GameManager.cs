@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     private float seconds = 0;
 
     public bool reset;
+    public bool fullReset;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,6 +65,11 @@ public class GameManager : MonoBehaviour
         if(reset){
             reset = false;
             PlayerPrefs.DeleteKey(highScoreCall);
+            highScore = 0;
+        }
+        if(fullReset){
+            fullReset = false;
+            PlayerPrefs.DeleteAll();
             highScore = 0;
         }
         if(seconds >= 300f){

@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 
     public int points;
     public int maxPoints;
-
+    
     // Start is called before the first frame update
     void Start()
     {

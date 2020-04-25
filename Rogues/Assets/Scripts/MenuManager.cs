@@ -21,10 +21,12 @@ public class MenuManager : MonoBehaviour
         
     }
     public void GameStart(){
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Level1");
         Time.timeScale = 1f;
     }
     public void GetInstructions(){
+        PlayerPrefs.DeleteAll();
         SceneManager.LoadScene("Level0");
         Time.timeScale = 1f;
     }
