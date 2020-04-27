@@ -357,6 +357,7 @@ MonoBehaviour:
   hardLevelReq: 21
   overrideLevel: 1
   reset: 0
+  fullReset: 0
 --- !u!4 &22131601
 Transform:
   m_ObjectHideFlags: 0
@@ -3089,7 +3090,7 @@ MonoBehaviour:
   currentColor: 0
   lightColor: {fileID: 1282444940}
   points: 0
-  maxPoints: 6
+  maxPoints: 14
 --- !u!82 &648247656
 AudioSource:
   m_ObjectHideFlags: 0
